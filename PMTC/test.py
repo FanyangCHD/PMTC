@@ -6,15 +6,15 @@ import torch
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-data_missing = np.load('./Test_data/input.npy')  
-data_clean = np.load('./Test_data/label.npy') 
+data_missing = np.load('model-main\PMTC\Test_data\input.npy')  
+data_clean = np.load('model-main\PMTC\Test_data\label.npy') 
 
 data_missing1 = data_missing
 data_missing = np.expand_dims(np.expand_dims(data_missing, axis=0), axis=0)
 data_missing = torch.from_numpy(data_missing)
 data_missing = data_missing.to(device=device, dtype=torch.float32) 
 
-model = torch.load('./Trained_model/abalation/save_MTC/MTC_epoch200.pth')
+model = torch.load('model-main\PMTC\Trained_model\\abalation\save_MTC\MTC_epoch200.pth')
 model.to(device=device)  
 model.eval()  
 
